@@ -154,7 +154,15 @@ namespace DungeonAndDragonsSharp.UI
         public void Pause()
         {
             Console.WriteLine("\nPress any key to continue...");
-            Console.ReadKey();
+            try
+            {
+                Console.ReadKey();
+            }
+            catch (InvalidOperationException)
+            {
+                // Handle redirected input (for automated testing)
+                Console.ReadLine();
+            }
         }
     }
 }
